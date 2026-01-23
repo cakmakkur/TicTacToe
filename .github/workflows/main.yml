@@ -23,18 +23,18 @@ jobs:
 
       - name: Run Checkstyle
         run: mvn checkstyle:check
-        working-directory: TicTacToe
+        working-directory: .
 
       - name: Build and run tests
         run: mvn clean test
-        working-directory: TicTacToe
+        working-directory: .
 
       - name: Build package
         run: mvn -B -DskipTests package
-        working-directory: TicTacToe
+        working-directory: .
 
       - name: Upload JAR artifact
         uses: actions/upload-artifact@v4
         with:
           name: tictactoe-jar
-          path: TicTacToe/target/*.jar
+          path: target/*.jar
