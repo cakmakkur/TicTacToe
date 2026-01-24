@@ -21,10 +21,6 @@ jobs:
           distribution: "temurin"
           cache: maven
 
-      - name: Run Checkstyle
-        run: mvn checkstyle:check
-        working-directory: .
-
       - name: Build and run tests
         run: mvn clean test
         working-directory: .

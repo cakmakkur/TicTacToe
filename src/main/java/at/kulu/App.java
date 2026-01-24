@@ -1,13 +1,19 @@
 package at.kulu;
 
 /**
- * Hello world!
- *
+ * Main entry point for the TicTacToe application.
  */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+public final class App {
+
+    /** Private constructor to prevent instantiation of this utility class. */
+    private App() {}
+
+    /**
+     * Main method.
+     *
+     * @param args command line arguments
+     */
+    public static void main(final String[] args) {
+        System.out.println("Hello World!");
     }
 }
