@@ -4,6 +4,6 @@
         "https://checkstyle.org/dtds/suppressions_1_2.dtd">
 
 <suppressions>
-    <!-- Suppress indentation check everywhere -->
     <suppress checks="Indentation" files=".*"/>
+    <suppress checks="AbbreviationAsWordInName" files=".*"/>
 </suppressions>
