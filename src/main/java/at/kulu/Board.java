@@ -2,13 +2,31 @@ package at.kulu;
 
 import at.kulu.interfaces.IBoard;
 
+/**
+ * Represents the Tic-Tac-Toe game board.
+ *
+ * <p>The board is implemented as a 3x3 grid of characters where each cell
+ * can contain a player marker or be empty. This class is responsible for
+ * storing and updating the board state, but it does not contain any game
+ * logic such as turn handling or win detection.</p>
+ *
+ * <p>The {@code Board} class provides operations to:</p>
+ * <ul>
+ *   <li>Check whether a cell is empty</li>
+ *   <li>Place a marker on the board</li>
+ *   <li>Determine whether the board is full</li>
+ *   <li>Reset the board to its initial empty state</li>
+ *   <li>Print the current board state to the console</li>
+ * </ul>
+ *
+ * <p>This class implements the {@link IBoard} interface.</p>
+ */
 public class Board implements IBoard {
 
     private char[][] cells;
 
     /**
      * Checks whether the specified cell is empty.
-     *
      * This method is used to validate a player's move before
      * placing a marker on the board.
      *
@@ -23,7 +41,6 @@ public class Board implements IBoard {
 
     /**
      * Places a marker on the specified cell.
-     *
      * This method assumes that the move has already been validated
      * by the caller.
      *
@@ -37,8 +54,9 @@ public class Board implements IBoard {
     }
 
     /**
-     * Placeholder Java Docs
-     * @return true
+     * Placeholder Java Docs.
+     *
+     * @return true or false.
      */
     @Override
     public boolean isFull() {
@@ -46,7 +64,7 @@ public class Board implements IBoard {
     }
 
     /**
-     * Placeholder Java Docs
+     * Placeholder Java Docs.
      */
     @Override
     public void clear() {
@@ -54,7 +72,7 @@ public class Board implements IBoard {
     }
 
     /**
-     * Placeholder Java Docs
+     * Placeholder Java Docs.
      */
     @Override
     public void print() {
