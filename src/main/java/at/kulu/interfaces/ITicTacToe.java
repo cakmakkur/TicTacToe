@@ -16,6 +16,16 @@ public interface ITicTacToe {
      * either by a win or a draw.
      */
     void start();
+
+    /**
+     * Switches current player to other player.
+     */
     void switchCurrentPlayer();
+
+    /**
+     * Checks if the game is finished and player has won.
+     *
+     * @return true or false
+     */
     boolean hasWinner();
 }
