@@ -57,14 +57,20 @@
           </execution>
         </executions>
       </plugin>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.11.0</version>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.3.0</version>
         <configuration>
-          <release>21</release>
+          <archive>
+            <manifest>
+              <mainClass>at.kulu.App</mainClass>
+            </manifest>
+          </archive>
         </configuration>
       </plugin>
+
     </plugins>
   </build>
 
