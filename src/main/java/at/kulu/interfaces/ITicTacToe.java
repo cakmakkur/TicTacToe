@@ -16,4 +16,6 @@ public interface ITicTacToe {
      * either by a win or a draw.
      */
     void start();
+    void switchCurrentPlayer();
+    boolean hasWinner();
 }
