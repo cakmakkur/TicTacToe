@@ -72,11 +72,26 @@ public class Board implements IBoard {
     }
 
     /**
-     * Placeholder Java Docs.
+     * Prints the current state of the game board to the console.
+     *
+     * <p>Each cell shows either a player marker or an empty space.
+     * Rows and columns are separated to improve readability.</p>
      */
     @Override
     public void print() {
-
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print(" " + cells[i][j] + " ");
+                if (j < 2) {
+                    System.out.print("|");
+                }
+            }
+            System.out.println();
+            if (i < 2) {
+                System.out.println("---+---+---");
+            }
+        }
     }
+
 
 }
