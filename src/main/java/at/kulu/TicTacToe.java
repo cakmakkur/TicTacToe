@@ -62,12 +62,34 @@ public class TicTacToe implements ITicTacToe {
     }
 
     /**
-     * Placeholder Java Docs.
+     * Starts the Tic-Tac-Toe game and notifies players when the game ends.
      */
     @Override
     public void start() {
+        Scanner scanner = new Scanner(System.in);
+        board.clear();
+        currentPlayer = player1;
 
+        while (true) {
+            board.print();
+            makeMove(scanner);
+
+            if (hasWinner()) {
+                board.print();
+                System.out.println("Player " + currentPlayer.getMarker() + " wins!");
+                break;
+            }
+
+            if (isDraw()) {
+                board.print();
+                System.out.println("The game ends in a draw.");
+                break;
+            }
+
+            switchCurrentPlayer();
+        }
     }
+
 
     /**
      * Placeholder Java Docs.
@@ -78,12 +100,48 @@ public class TicTacToe implements ITicTacToe {
     }
 
     /**
-     * Placeholder Java Docs.
+     * Checks whether the current player has won the game.
      *
-     * @return false or true
+     * <p>A win occurs when the current player has placed their marker
+     * in three consecutive cells in a row, column, or diagonal.</p>
+     *
+     * @return true if the current player has won, false otherwise
      */
     @Override
     public boolean hasWinner() {
+        char m = currentPlayer.getMarker();
+
+        for (int i = 0; i < 3; i++) {
+            if (board.get(i, 0) == m && board.get(i, 1) == m && board.get(i, 2) == m) {
+                return true;
+            }
+            if (board.get(0, i) == m && board.get(1, i) == m && board.get(2, i) == m) {
+                return true;
+            }
+        }
+
+        if (board.get(0, 0) == m && board.get(1, 1) == m && board.get(2, 2) == m) {
+            return true;
+        }
+
+        if (board.get(0, 2) == m && board.get(1, 1) == m && board.get(2, 0) == m) {
+            return true;
+        }
+
         return false;
     }
+
+    /**
+     * Checks whether the game has ended in a draw.
+     *
+     * <p>A draw occurs when the board is full and no player has won.</p>
+     *
+     * @return true if the game is a draw, false otherwise
+     */
+    private boolean isDraw() {
+        return board.isFull();
+    }
+
+
+
 }
