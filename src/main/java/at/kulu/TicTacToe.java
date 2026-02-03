@@ -29,6 +29,8 @@ public class TicTacToe implements ITicTacToe {
     private Player player2;
     private Player currentPlayer;
     private Board board;
+    private char[][] state = new char[3][3];
+
 
     /**
      * Handles a single move by the current player.
@@ -59,7 +61,10 @@ public class TicTacToe implements ITicTacToe {
         }
 
         board.place(x, y, currentPlayer.getMarker());
+
+        state[x][y] = currentPlayer.getMarker();
     }
+
 
     /**
      * Starts the Tic-Tac-Toe game and notifies players when the game ends.
@@ -68,6 +73,7 @@ public class TicTacToe implements ITicTacToe {
     public void start() {
         Scanner scanner = new Scanner(System.in);
         board.clear();
+        clearState();                
         currentPlayer = player1;
 
         while (true) {
@@ -89,6 +95,7 @@ public class TicTacToe implements ITicTacToe {
             switchCurrentPlayer();
         }
     }
+
 
 
     /**
@@ -141,6 +148,14 @@ public class TicTacToe implements ITicTacToe {
     private boolean isDraw() {
         return board.isFull();
     }
+
+    private void clearState() {
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            state[i][j] = ' ';
+        }
+    }
+}
 
 
 
