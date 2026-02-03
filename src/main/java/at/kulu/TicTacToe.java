@@ -66,14 +66,14 @@ public class TicTacToe implements ITicTacToe {
             if (hasWinner()) {
                 board.print();
                 System.out.println("Player " + currentPlayer.getMarker() + " wins!");
-                restartGame();
+                restartGame(scanner);
                 break;
             }
 
             if (board.isFull()) {
                 board.print();
                 System.out.println("The game ends in a draw.");
-                restartGame();
+                restartGame(scanner);
                 break;
             }
 
@@ -115,12 +115,13 @@ public class TicTacToe implements ITicTacToe {
     /**
      * Asks the players if they want to play again.
      */
-    public void restartGame(){
+    public void restartGame(Scanner scanner) {
         System.out.println("Do you want to play again [Y/n]?     ");
         String restart = scanner.next();
         restart = restart.toLowerCase();
 
         switch(restart){
+            
             case "y": 
                 start();
                 break;
