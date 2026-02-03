@@ -14,17 +14,24 @@ import at.kulu.interfaces.IPlayer;
  */
 public class Player implements IPlayer {
 
+    private final char marker;
+
+    /**
+     * Creates a new player with the given marker.
+     *
+     * @param marker the marker for this player (e.g. 'X' or 'O')
+     */
+    public Player(final char marker) {
+        this.marker = marker;
+    }
+
     /**
      * Returns the marker assigned to this player.
-     *
-     * <p>The marker uniquely identifies the player on the game board
-     * (for example {@code 'X'} or {@code 'O'}). It is used when placing
-     * moves during the game.</p>
      *
      * @return the player's marker
      */
     @Override
     public char getMarker() {
-        return 0;
+        return marker;
     }
 }

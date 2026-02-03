@@ -5,23 +5,6 @@ import java.util.Scanner;
 
 /**
  * Controls the flow of a Tic-Tac-Toe game.
- *
- * <p>This class is responsible for managing the overall game lifecycle,
- * including player turns, user input, move execution, and game termination.
- * It coordinates interactions between players and the game board but does
- * not directly manage the board's internal state.</p>
- *
- * <p>The {@code TicTacToe} class:</p>
- * <ul>
- *   <li>Starts and restarts a game</li>
- *   <li>Handles player input and moves</li>
- *   <li>Switches turns between players</li>
- *   <li>Checks for win and draw conditions</li>
- *   <li>Notifies players about the game outcome</li>
- * </ul>
- *
- * <p>This class implements the {@link ITicTacToe} interface and represents
- * the central game controller.</p>
  */
 public class TicTacToe implements ITicTacToe {
 
@@ -31,10 +14,17 @@ public class TicTacToe implements ITicTacToe {
     private Board board;
 
     /**
+     * Creates a new TicTacToe game.
+     */
+    public TicTacToe() {
+        board = new Board();
+        player1 = new Player('X');
+        player2 = new Player('O');
+        currentPlayer = player1;
+    }
+
+    /**
      * Handles a single move by the current player.
-     * Prompts the player for input, validates the chosen position,
-     * and places the player's marker on the board once a valid
-     * move is provided.
      */
     private void makeMove(Scanner scanner) {
         int x;
@@ -62,28 +52,57 @@ public class TicTacToe implements ITicTacToe {
     }
 
     /**
-     * Placeholder Java Docs.
+     * Starts the game loop.
      */
     @Override
     public void start() {
+        Scanner scanner = new Scanner(System.in);
+        board.clear();
 
+        while (true) {
+            board.print();
+            makeMove(scanner);
+
+            if (hasWinner()) {
+                board.print();
+                System.out.println("Player " + currentPlayer.getMarker() + " wins!");
+                break;
+            }
+
+            if (board.isFull()) {
+                board.print();
+                System.out.println("The game ends in a draw.");
+                break;
+            }
+
+            switchCurrentPlayer();
+        }
     }
 
     /**
-     * Placeholder Java Docs.
+     * Switches the current player.
      */
     @Override
     public void switchCurrentPlayer() {
-
+        currentPlayer = (currentPlayer == player1) ? player2 : player1;
     }
 
     /**
-     * Placeholder Java Docs.
+     * Checks whether the current player has won.
      *
-     * @return false or true
+     * @return true if the current player has won
      */
     @Override
     public boolean hasWinner() {
-        return false;
+        char[][] c = board.getCells();
+        char m = currentPlayer.getMarker();
+
+        for (int i = 0; i < 3; i++) {
+            if (c[i][0] == m && c[i][1] == m && c[i][2] == m) return true;
+            if (c[0][i] == m && c[1][i] == m && c[2][i] == m) return true;
+        }
+
+        return (c[0][0] == m && c[1][1] == m && c[2][2] == m)
+                || (c[0][2] == m && c[1][1] == m && c[2][0] == m);
     }
 }
