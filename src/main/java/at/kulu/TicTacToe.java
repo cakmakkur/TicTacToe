@@ -120,8 +120,7 @@ public class TicTacToe implements ITicTacToe {
         String restart = scanner.next();
         restart = restart.toLowerCase();
 
-        switch(restart){
-            
+        switch (restart) {
             case "y": 
                 start();
                 break;
