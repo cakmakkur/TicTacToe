@@ -98,8 +98,12 @@ public class TicTacToe implements ITicTacToe {
         char m = currentPlayer.getMarker();
 
         for (int i = 0; i < 3; i++) {
-            if (c[i][0] == m && c[i][1] == m && c[i][2] == m) return true;
-            if (c[0][i] == m && c[1][i] == m && c[2][i] == m) return true;
+            if (c[i][0] == m && c[i][1] == m && c[i][2] == m) {
+                return true;
+            }
+            if (c[0][i] == m && c[1][i] == m && c[2][i] == m) {
+                return true;
+            }
         }
 
         return (c[0][0] == m && c[1][1] == m && c[2][2] == m)
