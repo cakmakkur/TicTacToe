@@ -29,11 +29,15 @@ class BoardTest {
     void place_setsMarkerCorrectly() {
         board.place(1, 1, 'O');
         assertEquals('O', board.getCells()[1][1]);
+
+        board.place(0, 1, 'X');
+        assertEquals('X', board.getCells()[0][1]);
     }
 
     @Test
     void place_overwritesExistingMarker() {
         board.place(1, 1, 'X');
+        assertEquals('X', board.getCells()[1][1]);
         board.place(1, 1, 'O');
         assertEquals('O', board.getCells()[1][1]);
     }
@@ -85,6 +89,16 @@ class BoardTest {
     void print_doesNotThrowExceptionOnFilledBoard() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
+                board.place(i, j, 'X');
+            }
+        }
+        assertDoesNotThrow(() -> board.print());
+    }
+
+    @Test
+    void print_doesNotThrowExceptionOnPartiallyFilledBoard() {
+        for (int i = 2; i < 3; i++) {
+            for (int j = 2; j < 3; j++) {
                 board.place(i, j, 'X');
             }
         }
