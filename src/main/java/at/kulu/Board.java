@@ -16,11 +16,19 @@ public class Board implements IBoard {
         clear();
     }
 
+    /**
+     * Checks if the cell is empty.
+     *
+     * @return true if empty.
+     */
     @Override
     public boolean isCellEmpty(int x, int y) {
         return cells[x][y] == ' ';
     }
 
+    /**
+     * Places marker to given cell.
+     */
     @Override
     public void place(int x, int y, char marker) {
         cells[x][y] = marker;
@@ -56,6 +64,9 @@ public class Board implements IBoard {
         }
     }
 
+    /**
+     * Prints the board in the console.
+     */
     @Override
     public void print() {
         for (int i = 0; i < 3; i++) {
@@ -73,7 +84,7 @@ public class Board implements IBoard {
     }
 
     /**
-     * Internal access for win checking (package-private on purpose).
+     * Method for internal access for win checking.
      */
     char[][] getCells() {
         return cells;
