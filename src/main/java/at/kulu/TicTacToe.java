@@ -1,6 +1,7 @@
 package at.kulu;
 
 import at.kulu.interfaces.ITicTacToe;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -20,7 +21,21 @@ public class TicTacToe implements ITicTacToe {
         board = new Board();
         player1 = new Player('X');
         player2 = new Player('O');
-        currentPlayer = player1;
+        genRandomStartPlayer();
+    }
+
+    /**
+     * Sets the start player at random.
+     */
+    private void genRandomStartPlayer() {
+        Random random = new Random();
+        int choice = random.nextInt(2);
+
+        if (choice == 0) {
+            currentPlayer = player1;
+        } else {
+            currentPlayer = player2;
+        }
     }
 
     /**
@@ -130,5 +145,12 @@ public class TicTacToe implements ITicTacToe {
             default:
                 System.out.println("Invalid Input. Game ends.");
         }
+    }
+
+    /**
+     * Gets the marker of the current player.
+     */
+     public char getCurrentPlayer() {
+        return currentPlayer.getMarker();
     }
 }
