@@ -150,7 +150,14 @@ public class TicTacToe implements ITicTacToe {
     /**
      * Gets the marker of the current player.
      */
-     public char getCurrentPlayer() {
+    public char getCurrentPlayer() {
         return currentPlayer.getMarker();
+    }
+
+    /**
+     * Gets the board. Help method for UnitTesting.
+     */
+    public Board getBoard() {
+        return board;
     }
 }
