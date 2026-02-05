@@ -9,10 +9,10 @@ import java.util.Scanner;
  */
 public class TicTacToe implements ITicTacToe {
 
-    private Player player1;
-    private Player player2;
+    private final Player player1;
+    private final Player player2;
     private Player currentPlayer;
-    private Board board;
+    private final Board board;
 
     /**
      * Creates a new TicTacToe game.
